@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <button id="myBtn" style="margin: 10px; margin-top: 20px;" class="btn btn-success">Launch Popup!</button>
+  <div id="myModal" class="mdl">
+  <form style="width: 50%; border: 1px solid black; padding:0;" id="regForm" onsubmit = "event.preventDefault();" >
+    <!-- One "tab" for each step in the form: -->
+    <br>
+    <div class="tab">
+      <button style="background-color:white; padding-top: 0; padding-bottom: 0;" onclick="closemdl()" class="btn btn-lg"><b>X</b></button>
+      <h2 style="display: inline; padding-bottom: 0">&nbsp Event Type</h2>
+      <hr>
+      <br>
+      <div class="container" style="margin-left: 10%; width: 60%; "  >
+        <h3>Paid-event or Free-event?</h3>
+        <br>
+        <div class="optBox" onclick="slct(1)">
+          <center>
+           <input  id="rd1" type="radio" onchange="changeBtn()" name="optradio" >
+          <br>
+            <i class="fas fa-dollar-sign"></i>
+            
+            <h5 style="display: inline;">PAID</h5>
+          </center>
+         
+        </div>
+        <br>
+        <div class="optBox" onclick="slct(2)">
+          <center>
+          <input  id="rd2" type="radio" onchange="changeBtn()" name="optradio" >
+          <br>
+            <i class="fab fa-creative-commons-nc"></i>
+            <h5 style="display: inline;">FREE</h5>
+          </center>
+        
+          </div>
+      </div>
+      <br>
+      <hr>
+    </div>
+    <div class="tab">
+      <button style="background-color:white; padding-top: 0; padding-bottom: 0;" onclick="closemdl()" class="close-btn btn btn-lg"><b>X</b></button>
+      <h2 style="display: inline; padding-bottom: 0">&nbsp Paid Event</h2>
+      <hr>
+      <br>
+      <div class="container" style="margin-left: 10%; width: 60%; "  >
+        <h3>Single-cost event or Multiple-cost event?</h3>
+        <br><br>
+        <div onclick="sl(3)" class="optBox" >
+          <center>
+          <input id="rd3" type="radio" name="optradio" >
+          <br>
+            <i class="fas fa-stop"></i>
+            
+            <h5 style="display: inline;">Single &nbsp</h5>
+          </center>
+          
+        </div>
+        <br>
+        <div onclick="sl(4)" class="optBox">
+          <center>
+          <input id="rd4" type="radio" name="optradio" >
+          <br>
+            <i class="fas fa-layer-group"></i>
+            <h5 style="display: inline;">Multiple &nbsp</h5>
+            
+          </center>
+          </div>
+      </div>
+      <br>
+      <hr>
+    </div>
+    <div class="tab">
+      <button style="background-color:white; padding-top: 0; padding-bottom: 0;" onclick="closemdl()" class="close-btn btn btn-lg"><b>X</b></button>
+      <h2 style="display: inline; padding-bottom: 0">&nbsp Price & Availability</h2>
+      <hr>
+      <br>
+      <div class="container" style="margin-left: 10%; width: 60%;" >
+        <h3>Price of ticket?</h3>
+        <select style=" display:inline; background-color: rgb(236, 233, 233);padding: 5px;" id="currency" name="currency">
+          <option value="inr" selected><b>₹</b></option>
+          <option value="usd"><b>$</b></option>
+          <option value="eur"><b>€</b></option>
+        </select>
+        <input type="text" style=" margin-left:-5px; display: inline; width: 50%; height: 30px;background-color: rgb(250, 250, 250);" placeholder="Price per ticket">
+        <br><br>  
+        <h3>Availability?</h3>
+        <br>
+        <div  onclick="sll(5)" class="optBox">
+          <center>
+            <input id="rd5" type="radio" name="optradio" >
+            <h5 style="display: inline;">Online &nbsp</h5>
+            
+          </center>
+        </div>
+        <br>
+        <div  onclick="sll(6)" class="optBox">
+          <center>
+            <input id="rd6" type="radio" name="optradio" >
+            <h5 style="display: inline;">Offline &nbsp</h5>
+            
+          </center>
+          </div>
+      </div>
+      <br>
+      <hr>
+    </div>
+    <div class="tab">
+      <button style="background-color:white; padding-top: 0; padding-bottom: 0;" onclick="closemdl()" class="close-btn btn btn-lg"><b>X</b></button>
+      <h2 style="display: inline; padding-bottom: 0">&nbsp Multiple Ticket</h2>
+      <button style="float: right; margin-right: 2%; color: rgb(62, 62, 255);" onclick="addCategory()" class="btn btn-default"><span style="font-size:large;padding:0;" >+ Category</span></button>
+      <hr>
+      <br>
+      <div id="categories">
+      <div class="category-box" id="0" style="margin-left: 10%; width: 80%; padding:10px ; margin: 20px; border: 1px solid #d1d1d1;" >
+        <div  id="short-container" style="display: none; ">
+          <h3 style="display: inline;" id="summary">Category: 0</h3>
+          <span id="0" onclick="showFull(this.id)" style="cursor: pointer; float: right; padding: 5px; padding-bottom: 2px; border: 1px solid;" ><i style="font-size:20px" class="fa">&#xf107;</i></span>
+        </div>
+        <div style="display: block;" id="long-container">
+        <h3 style="display: inline;">Category?</h3>
+        <button style="float: right; display: none;" id="0" onclick="removeCategory(this.id)" class="btn btn-danger"><i class="fas fa-minus-circle"></i>&nbsp Remove</button>
+        <br><br>
+        <input id="0" onchange="updateSummary(this.id)"  style=" background-color : rgb(250, 250, 250); width: 50%;" type="text" placeholder="Ex: Entry, food, or parking etc.">
+        <br>
+        <h3>Desription</h3>
+        <textarea style=" background-color : rgb(250, 250, 250); width: 80%;" placeholder="Description"  rows="3"></textarea>
+        <h3>Total price of this category?</h3>
+        <select id="0" onchange="updateSummary(this.id)" style=" display:inline; background-color: rgb(236, 233, 233);padding: 5px;" id="currency" name="currency">
+          <option value="₹" selected><b>₹</b></option>
+          <option value="$"><b>$</b></option>
+          <option value="€"><b>€</b></option>
+        </select>
+        <input id="0" type="text" onchange="updateSummary(this.id)" style=" margin-left:-5px; display: inline; width: 50%; height: 30px;background-color: rgb(250, 250, 250);" placeholder="Price per ticket">
+      </div>
+    </div>
+      <br>
+      <hr>
+      </div>
+    </div>
+    <div style="overflow:auto; padding:10px">
+      
+      <hr>
+      <h4 style="display: none; margin-left: 3%;" id="total">Total Price: </h4>
+      <div style="float:right;">
+        <button style="color: white;" type="button" id="prevBtn" class="btn" onclick="nextPrev(-1)">Back</button>
+        <button style="color: white; margin-right: 20px; background-color: rgb(82, 82, 240);" class="btn" type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+      </div>
+    </div>
+    <!-- Circles which indicates the steps of the form: -->
+    
+   
+  </form>
+    </div>
+    </body>
+    <script src="ind.js"></script>
+</html>
